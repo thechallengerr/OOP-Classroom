@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "653212893322",
+    "firebase_url": "https://crdemo-2020.firebaseio.com",
+    "project_id": "crdemo-2020",
+    "storage_bucket": "crdemo-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653212893322:android:8121fea4f5664fb770ad73",
+        "android_client_info": {
+          "package_name": "com.example.hus_oop_classroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653212893322-gi3v62ohbpskcvq4tdvgu48htj65nh0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdTzS2dusxiYRNY9dJWKES-t_0LrJxBeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653212893322-gi3v62ohbpskcvq4tdvgu48htj65nh0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653212893322:android:ffac5ef49b49cde770ad73",
+        "android_client_info": {
+          "package_name": "com.hus.oop_classroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653212893322-gi3v62ohbpskcvq4tdvgu48htj65nh0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdTzS2dusxiYRNY9dJWKES-t_0LrJxBeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653212893322-gi3v62ohbpskcvq4tdvgu48htj65nh0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
