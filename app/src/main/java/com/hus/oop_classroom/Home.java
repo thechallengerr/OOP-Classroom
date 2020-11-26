@@ -48,7 +48,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.profile) {
-            Intent intent = new Intent(getApplicationContext(), MyProfile.class);
+            Intent intent = new Intent(getApplicationContext(), UserProfile.class);
             startActivity(intent);
         }
 

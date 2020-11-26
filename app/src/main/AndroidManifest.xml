@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OOPClassroom">
+        <activity android:name=".Events"></activity>
+
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/app_bar_home" />
