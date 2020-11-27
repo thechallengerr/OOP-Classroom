@@ -59,15 +59,16 @@ public class Register extends AppCompatActivity {
                     return;
                 }
                 if (!nemail.contains("@")) {
-                    return;
+                    mEmail.setError("Email must be @");
+                return;
                 }
 
                 if (npass.length() <6){
-                    Toast.makeText(Register.this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                    password.setError("Password must be at least 6 characters");
                     return;
                 }
                 if (!npass.equals(npass2)) {
-                    Toast.makeText(Register.this, "Password repeat doesn't match", Toast.LENGTH_SHORT).show();
+                    passwordrepeat.setError("Password repeat doesn't match");
                     return;
                 }
                 user.setEmail(nemail);
