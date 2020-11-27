@@ -1,5 +1,6 @@
 package com.hus.oop_classroom;
 
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,40 +12,48 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-//import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.navigation.NavigationView;
+import com.hus.oop_classroom.Navigation.Announcements;
+import com.hus.oop_classroom.Navigation.AppRating;
+import com.hus.oop_classroom.Navigation.Course;
+import com.hus.oop_classroom.Navigation.Events;
+import com.hus.oop_classroom.Navigation.Report;
+import com.hus.oop_classroom.Navigation.Share;
+import com.hus.oop_classroom.Navigation.UserProfile;
 
-public class Home extends AppCompatActivity implements  View.OnClickListener{
+public class Home extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-    LinearLayout profile;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-//        Toolbar toolbar = findViewById(R.id.toolbar);
+        navigationView=findViewById(R.id.nav_view);
+        drawerLayout=findViewById(R.id.drawer_layout);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Wtf man", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-//        navigationView.setNavigationItemSelectedListener(this);
-//        View header = navigationView.getHeaderView(0);
-//        profile = header.findViewById(R.id.profile);
-//        profile.setOnClickListener(this);
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        navigationView.setCheckedItem(R.id.nav_home);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -56,37 +65,42 @@ public class Home extends AppCompatActivity implements  View.OnClickListener{
 
     }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//
-//        if (id == R.id.nav_courses) {
-//            Intent intent = new Intent(getApplicationContext(), Course.class);
-//            startActivity(intent);
-//        } else if (id == R.id.nav_events) {
-//            Intent intent = new Intent(getApplicationContext(), Events.class);
-//            startActivity(intent);
-//
-//        } else if (id == R.id.nav_lectures) {
-//            Intent intent = new Intent(getApplicationContext(), Lectures.class);
-//            startActivity(intent);
-//        } else if (id == R.id.nav_announcements) {
-//            Intent intent = new Intent(getApplicationContext(), Announcements.class);
-//            startActivity(intent);
-//        } else if (id == R.id.nav_settings) {
-//            Intent intent = new Intent(getApplicationContext(), Setting.class);
-//            startActivity(intent);
-//
-//        } else if (id == R.id.nav_logout) {
-//            finish();
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_rate) {
-//
-//        }
-//
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                break;
+            case R.id.nav_announcements:
+                startActivity(new Intent(Home.this, Announcements.class));
+                break;
+            case R.id.nav_courses:
+                startActivity(new Intent(Home.this, Course.class));
+                break;
+            case R.id.nav_events:
+                startActivity(new Intent(Home.this, Events.class));
+                break;
+            case R.id.nav_profile:
+                startActivity(new Intent(Home.this,UserProfile.class));
+                break;
+            case R.id.nav_share:
+                startActivity(new Intent(Home.this, Share.class));
+                break;
+            case R.id.nav_report_bug:
+                startActivity(new Intent(Home.this, Report.class));
+                break;
+            case R.id.nav_rate:
+                startActivity(new Intent(Home.this, AppRating.class));
+                break;
+            case R.id.nav_logout:
+                startActivity(new Intent(Home.this,Login.class));
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return  true;
+
+    }
+
 
 }
