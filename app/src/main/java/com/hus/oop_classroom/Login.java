@@ -56,20 +56,17 @@ public class Login extends AppCompatActivity {
                 if (!email.contains("@")) {
                     return;
                 }
-                mAuth.signInWithEmailAndPassword(email,pw).
-                        addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                final Task<AuthResult> authResultTask = mAuth.signInWithEmailAndPassword(email, pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
+                        if (task.isSuccessful()) {
                             Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(Login.this, Home.class);
                             startActivity(intent);
-                        }else {
+                        } else {
                             Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
                         }
-
                     }
-
                 });
             }
         });
