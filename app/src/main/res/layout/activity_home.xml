@@ -11,17 +11,18 @@
     tools:openDrawer="start"
     tools:ignore="InvalidId">
 
-   <com.google.android.material.appbar.AppBarLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-       <com.google.android.material.appbar.MaterialToolbar
-           android:id="@+id/toolbar"
-           android:layout_width="match_parent"
-           android:layout_height="?attr/actionBarSize"
-           android:background="@color/my_blue"
-           app:popupTheme="@style/Theme.OOPClassroom.PopupOverlay"></com.google.android.material.appbar.MaterialToolbar>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-   </com.google.android.material.appbar.AppBarLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/my_blue"
+            app:popupTheme="@style/Theme.OOPClassroom.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -40,12 +41,6 @@
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
             android:orientation="vertical">
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
-            </HorizontalScrollView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -112,7 +107,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:drawableLeft="@drawable/ic_event_available"
+                                        android:drawableStart="@drawable/ic_event_available"
                                         android:drawablePadding="8dp"
                                         android:gravity="center"
                                         android:text="12 Jul 2019" />

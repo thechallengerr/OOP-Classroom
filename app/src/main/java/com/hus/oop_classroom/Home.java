@@ -1,6 +1,10 @@
 package com.hus.oop_classroom;
 
-import androidx.activity.OnBackPressedDispatcherOwner;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,18 +12,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
 import com.google.android.material.navigation.NavigationView;
-import com.hus.oop_classroom.Navigation.Announcements;
-import com.hus.oop_classroom.Navigation.AppRating;
-import com.hus.oop_classroom.Navigation.Course;
-import com.hus.oop_classroom.Navigation.Events;
-import com.hus.oop_classroom.Navigation.Report;
-import com.hus.oop_classroom.Navigation.Share;
+import com.hus.oop_classroom.Navigation.Communication.AppRating;
+import com.hus.oop_classroom.Navigation.Personal.Events;
+import com.hus.oop_classroom.Navigation.Personal.Announcements;
+import com.hus.oop_classroom.Navigation.Personal.Course;
+import com.hus.oop_classroom.Navigation.Communication.Report;
+import com.hus.oop_classroom.Navigation.Communication.Share;
 import com.hus.oop_classroom.Navigation.UserProfile;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
