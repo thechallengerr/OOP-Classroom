@@ -4,25 +4,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/room"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <activity android:name=".Navigation.AppRating"></activity>
-        <activity android:name=".Navigation.Share" />
-
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/app_bar_home" />
-
-        <activity android:name=".Navigation.Lectures" />
-        <activity android:name=".Setting" />
-        <activity android:name=".Navigation.Announcements" />
-        <activity android:name=".Navigation.Course" />
-        <activity android:name=".Navigation.Events" />
-        <activity android:name=".Navigation.UserProfile" />
-        <activity android:name=".Home" />
+        android:theme="@style/Theme.OOPClassroom">
         <activity
             android:name=".Login"
             android:label="@string/app_name"
@@ -33,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.OOPClassroom.NoActionBar"/>
+        <activity android:name=".Register"></activity>
+
     </application>
 
 </manifest>
