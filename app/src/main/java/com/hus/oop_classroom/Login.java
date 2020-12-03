@@ -22,15 +22,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
     private EditText edit_email, edit_pw;
-    private FirebaseAuth mAuth;
-    private Users users;
+    DatabaseReference ref;
     CheckBox remember;
-    TextView t1;
+    TextView t1,t2;
     Button login;
-    String email, pw;
+    private String email, pw;
     private SharedPreferences mPrefs;
     private SharedPreferences.Editor editor;
     private Boolean saveLogin;
@@ -44,9 +49,10 @@ public class Login extends AppCompatActivity {
         edit_email = (EditText) findViewById(R.id.edit_email);
         edit_pw = (EditText) findViewById(R.id.edit_pw);
         t1= (TextView) findViewById(R.id.lnkRegister);
+        t2= (TextView) findViewById(R.id.lnkfw);
         login= (Button) findViewById(R.id.btnlogin);
         remember= (CheckBox) findViewById(R.id.remember);
-        mAuth= FirebaseAuth.getInstance();
+        ref= FirebaseDatabase.getInstance().getReference().child("Users");
         mPrefs= getSharedPreferences("checkbox",MODE_PRIVATE);
         editor= mPrefs.edit();
 
@@ -93,23 +99,37 @@ public class Login extends AppCompatActivity {
                         editor.commit();
                     }
                 }
-                mAuth.signInWithEmailAndPassword(email,pw).
-                        addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                Query query = ref.orderByChild("email").equalTo(email);
+                query.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Login.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else {
-                            Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot user : snapshot.getChildren()) {
+                            // do something with the individual "issues"
+                            Users users = user.getValue(Users.class);
+                            if (pw.equals(users.getPassword())) {
+                                Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(Login.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
+                            }
                         }
-
                     }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
                 });
 
+            }
+        });
+
+        t2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, ForgotPassword.class));
             }
         });
     }
