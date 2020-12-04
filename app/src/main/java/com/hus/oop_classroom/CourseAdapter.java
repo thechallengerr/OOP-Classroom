@@ -49,7 +49,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             course_startday=itemView.findViewById(R.id.course_startday);
             course_time= itemView.findViewById(R.id.course_time);
             teacher= itemView.findViewById(R.id.teacher);
-            attendant=itemView.findViewById(R.id.attendant)
+            attendant=itemView.findViewById(R.id.attendant);
         }
 
 
