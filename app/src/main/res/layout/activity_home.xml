@@ -11,18 +11,11 @@
     tools:openDrawer="start"
     tools:ignore="InvalidId">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <include
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        layout="@layout/app_bar_main"/>
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/my_blue"
-            app:popupTheme="@style/Theme.OOPClassroom.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -37,6 +30,7 @@
         android:layout_width="match_parent"
         android:paddingTop="50dp">
         <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
