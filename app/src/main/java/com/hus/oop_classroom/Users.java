@@ -2,6 +2,7 @@ package com.hus.oop_classroom;
 
 public class Users {
     private String email;
+    private String type;
     private String username;
     private String password;
 
@@ -13,8 +14,9 @@ public class Users {
         this.email = email;
         this.password = password;
     }
-    public Users(String email, String username, String password) {
+    public Users(String email, String type, String username, String password) {
         this.email = email;
+        this.type = type;
         this.username= username;
         this.password = password;
     }
@@ -25,6 +27,14 @@ public class Users {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUsername() {
