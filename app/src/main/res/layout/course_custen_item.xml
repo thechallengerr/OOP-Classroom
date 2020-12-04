@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/course_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lớp học đá cốc"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:orientation="horizontal"
+        android:id="@+id/course_info">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/course_photo"
+            android:layout_width="126dp"
+            android:layout_height="88dp"
+            android:background="@drawable/vinh2" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/course_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="10:00 - 12:00"
+                android:drawableStart="@drawable/ic_clock" />
+
+            <TextView
+                android:id="@+id/course_startday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_event_available"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="12 Jul 2019" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="Vinh"
+                app:drawableLeftCompat="@drawable/ic_teacher" />
+
+            <TextView
+                android:id="@+id/attendant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:drawableLeftCompat="@drawable/ic_person"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="45" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
