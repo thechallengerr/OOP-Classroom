@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.hus.oop_classroom.Navigation.Communication.AppRating;
 import com.hus.oop_classroom.Navigation.Personal.Events;
 import com.hus.oop_classroom.Navigation.Personal.Announcements;
-import com.hus.oop_classroom.Navigation.Personal.Course;
+import com.hus.oop_classroom.Navigation.Personal.Course.Nav_Course;
 import com.hus.oop_classroom.Navigation.Communication.Report;
 import com.hus.oop_classroom.Navigation.Communication.Share;
 import com.hus.oop_classroom.Navigation.UserProfile;
@@ -79,7 +79,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
                 startActivity(new Intent(Home.this, Announcements.class));
                 break;
             case R.id.nav_courses:
-                startActivity(new Intent(Home.this, Course.class));
+                startActivity(new Intent(Home.this, Nav_Course.class));
                 break;
             case R.id.nav_events:
                 startActivity(new Intent(Home.this, Events.class));

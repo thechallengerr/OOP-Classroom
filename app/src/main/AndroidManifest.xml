@@ -25,7 +25,7 @@
         <activity android:name=".Register"></activity>
         <activity android:name=".Navigation.Communication.Share"></activity>
         <activity android:name=".Navigation.Communication.AppRating"></activity>
-        <activity android:name=".Navigation.Personal.Course"></activity>
+        <activity android:name=".Navigation.Personal.Course.Nav_Course"></activity>
         <activity android:name=".Navigation.Personal.Lectures"></activity>
         <activity android:name=".Navigation.Personal.Events"></activity>
         <activity android:name=".Navigation.Personal.Announcements"></activity>
