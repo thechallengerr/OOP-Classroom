@@ -1,12 +1,35 @@
 package com.hus.oop_classroom;
 
-public class Course {
-    String course_name, teacher;
-    int attendant;
+import com.google.type.Date;
 
-    public Course(String course_name, String teacher, int attendant) {
+public class Course {
+    private int course_photo_ID,attendant,fee;
+    private String course_name;
+    private String teacher;
+    private Date course_startday;
+
+    public Course(int course_photo_ID, int attendant,int fee, String course_name, String teacher, Date course_startday) {
+        this.course_photo_ID = course_photo_ID;
+        this.attendant = attendant;
         this.course_name = course_name;
         this.teacher = teacher;
+        this.course_startday = course_startday;
+        this.fee=fee;
+    }
+
+    public int getCourse_photo_ID() {
+        return course_photo_ID;
+    }
+
+    public void setCourse_photo_ID(int course_photo_ID) {
+        this.course_photo_ID = course_photo_ID;
+    }
+
+    public int getAttendant() {
+        return attendant;
+    }
+
+    public void setAttendant(int attendant) {
         this.attendant = attendant;
     }
 
@@ -26,11 +49,19 @@ public class Course {
         this.teacher = teacher;
     }
 
-    public int getAttendant() {
-        return attendant;
+    public int getFee() {
+        return fee;
     }
 
-    public void setAttendant(int attendant) {
-        this.attendant = attendant;
+    public void setFee(int fee) {
+        this.fee = fee;
+    }
+
+    public Date getCourse_startday() {
+        return course_startday;
+    }
+
+    public void setCourse_startday(Date course_startday) {
+        this.course_startday = course_startday;
     }
 }
