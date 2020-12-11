@@ -7,6 +7,7 @@ public class Course {
     private String course_name;
     private String teacher;
     private Date course_startday;
+    private String course_description;
 
     public Course(int course_photo_ID, int attendant,int fee, String course_name, String teacher, Date course_startday) {
         this.course_photo_ID = course_photo_ID;

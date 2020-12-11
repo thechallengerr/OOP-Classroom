@@ -24,7 +24,6 @@
         android:layout_width="wrap_content"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/main" />
-
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -306,6 +305,8 @@
 
 
     </ScrollView>
-
-
 </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+
