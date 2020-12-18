@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.hus.oop_classroom.CourseAdapter;
+import com.hus.oop_classroom.Adapter.CourseAdapter;
 import com.hus.oop_classroom.R;
 
 public class Nav_Course extends AppCompatActivity {
@@ -17,7 +17,7 @@ public class Nav_Course extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
-        RvCourse= findViewById(R.id.recycler_course);
+        RvCourse= findViewById(R.id.course_recycler);
         courseAdapter= new CourseAdapter(this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RvCourse.setLayoutManager(linearLayoutManager);

@@ -1,4 +1,4 @@
-package com.hus.oop_classroom.Navigation.Personal;
+package com.hus.oop_classroom.model;
 
 import 	androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

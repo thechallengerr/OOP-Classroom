@@ -1,4 +1,4 @@
-package com.hus.oop_classroom;
+package com.hus.oop_classroom.model;
 
 public class Users {
     private String email;

@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity android:name=".RVcourse"></activity>
         <activity
-            android:name=".Login"
+            android:name=".Activity.Login"
             android:label="@string/app_name"
             android:theme="@style/Theme.OOPClassroom.NoActionBar">
             <intent-filter>
@@ -20,16 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ForgotPassword" />
+        <activity android:name=".Activity.ForgotPassword" />
         <activity android:name=".Home" />
         <activity android:name=".Navigation.UserProfile" />
-        <activity android:name=".Register" />
+        <activity android:name=".Activity.Register" />
         <activity android:name=".Navigation.Communication.ActivityShare" />
         <activity android:name=".Navigation.Communication.ActivityAppRating" />
         <activity android:name=".Navigation.Personal.Course.Nav_Course" />
-        <activity android:name=".Navigation.Personal.Lectures" />
-        <activity android:name=".Navigation.Personal.Events" />
-        <activity android:name=".Navigation.Personal.Announcements" />
+        <activity android:name=".model.Lectures" />
+        <activity android:name=".model.Events" />
+        <activity android:name=".model.Announcements" />
     </application>
 
 </manifest>

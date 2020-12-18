@@ -13,8 +13,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.hus.oop_classroom.Navigation.Personal.Events;
-import com.hus.oop_classroom.Navigation.Personal.Announcements;
+import com.hus.oop_classroom.Activity.Login;
+import com.hus.oop_classroom.model.Events;
+import com.hus.oop_classroom.model.Announcements;
 import com.hus.oop_classroom.Navigation.Communication.ActivityAppRating;
 import com.hus.oop_classroom.Navigation.Communication.ActivityReport;
 import com.hus.oop_classroom.Navigation.Communication.ActivityShare;
@@ -92,7 +93,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
                 startActivity(new Intent(Home.this, ActivityAppRating.class));
                 break;
             case R.id.nav_logout:
-                startActivity(new Intent(Home.this,Login.class));
+                startActivity(new Intent(Home.this, Login.class));
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

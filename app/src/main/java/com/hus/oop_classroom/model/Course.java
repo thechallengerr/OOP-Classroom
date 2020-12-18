@@ -1,21 +1,26 @@
-package com.hus.oop_classroom;
+package com.hus.oop_classroom.model;
 
 import com.google.type.Date;
 
+import java.util.List;
+
 public class Course {
-    private int course_photo_ID,attendant,fee;
+    private int course_photo_ID;
+    private int attendant,price;
     private String course_name;
     private String teacher;
     private Date course_startday;
     private String course_description;
+    private List<PlayList> playList = null;
 
-    public Course(int course_photo_ID, int attendant,int fee, String course_name, String teacher, Date course_startday) {
+    public Course(int course_photo_ID, int attendant,int price, String course_name, String teacher, Date course_startday, String course_description) {
         this.course_photo_ID = course_photo_ID;
         this.attendant = attendant;
         this.course_name = course_name;
         this.teacher = teacher;
         this.course_startday = course_startday;
-        this.fee=fee;
+        this.price=price;
+        this.course_description=course_description;
     }
 
     public int getCourse_photo_ID() {
@@ -51,11 +56,11 @@ public class Course {
     }
 
     public int getFee() {
-        return fee;
+        return price;
     }
 
     public void setFee(int fee) {
-        this.fee = fee;
+        this.price = price;
     }
 
     public Date getCourse_startday() {

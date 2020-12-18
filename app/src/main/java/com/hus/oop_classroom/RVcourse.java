@@ -12,6 +12,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hus.oop_classroom.Adapter.CourseAdapter;
+import com.hus.oop_classroom.model.Course;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class RVcourse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
-        recyclerView=findViewById(R.id.recycler_course);
+        recyclerView=findViewById(R.id.course_recycler);
         courseAdapter = new CourseAdapter(this);
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);

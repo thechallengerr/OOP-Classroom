@@ -1,4 +1,4 @@
-package com.hus.oop_classroom;
+package com.hus.oop_classroom.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.hus.oop_classroom.R;
+import com.hus.oop_classroom.model.Course;
 
 import java.util.ArrayList;
 
