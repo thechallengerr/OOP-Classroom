@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.hus.oop_classroom.R;
 
-public class AppRating extends AppCompatActivity {
+public class ActivityAppRating extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

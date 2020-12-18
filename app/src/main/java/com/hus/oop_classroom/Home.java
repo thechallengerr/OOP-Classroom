@@ -35,7 +35,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 //        toolbar.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
