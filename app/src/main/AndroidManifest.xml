@@ -24,8 +24,8 @@
         <activity android:name=".Home" />
         <activity android:name=".Navigation.UserProfile" />
         <activity android:name=".Register" />
-        <activity android:name=".Navigation.Communication.Share" />
-        <activity android:name=".Navigation.Communication.AppRating" />
+        <activity android:name=".Navigation.Communication.ActivityShare" />
+        <activity android:name=".Navigation.Communication.ActivityAppRating" />
         <activity android:name=".Navigation.Personal.Course.Nav_Course" />
         <activity android:name=".Navigation.Personal.Lectures" />
         <activity android:name=".Navigation.Personal.Events" />

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.hus.oop_classroom.R;
 
-public class Share extends AppCompatActivity {
+public class ActivityShare extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
