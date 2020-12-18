@@ -35,17 +35,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        toolbar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                drawerLayout.openDrawer(GravityCompat.START);
-//            }
-//        });
-//        navigationView.bringToFront();
-        toggle= new ActionBarDrawerToggle(this, drawerLayout,toolbar,
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        navigationView.bringToFront();
+        ActionBarDrawerToggle drawerToggle= new ActionBarDrawerToggle(this, drawerLayout,toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 //        View header = navigationView.getHeaderView(0);
         navigationView.setCheckedItem(R.id.nav_home);
