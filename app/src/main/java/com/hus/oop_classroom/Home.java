@@ -26,7 +26,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
     NavigationView navigationView;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +34,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-        navigationView.bringToFront();
         ActionBarDrawerToggle drawerToggle= new ActionBarDrawerToggle(this, drawerLayout,toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
