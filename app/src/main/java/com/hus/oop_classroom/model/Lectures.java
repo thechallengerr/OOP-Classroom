@@ -1,21 +1,22 @@
 package com.hus.oop_classroom.model;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class Lectures {
+    private  String name;
+    private String time;
 
-import android.os.Bundle;
-
-import com.hus.oop_classroom.R;
-
-public class Lectures extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lectures);
+    public String getName() {
+        return name;
     }
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

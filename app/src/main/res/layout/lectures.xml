@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="5.35 mins"
+        android:text="5:35"
         android:textColor="#A0A5BD"
         app:layout_constraintStart_toEndOf="@+id/content_number"
         app:layout_constraintTop_toTopOf="@+id/content_number" />

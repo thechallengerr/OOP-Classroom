@@ -55,6 +55,8 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
+
+
         firebaseFirestore= FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseStorage=FirebaseStorage.getInstance().getReference();

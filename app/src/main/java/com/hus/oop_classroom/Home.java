@@ -71,14 +71,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         switch (item.getItemId()){
             case R.id.nav_home:
                 break;
-            case R.id.nav_announcements:
-                startActivity(new Intent(Home.this, Announcements.class));
-                break;
+
             case R.id.nav_courses:
                 startActivity(new Intent(Home.this, Nav_Course.class));
-                break;
-            case R.id.nav_events:
-                startActivity(new Intent(Home.this, Events.class));
                 break;
             case R.id.nav_profile:
                 startActivity(new Intent(Home.this,UserProfile.class));
