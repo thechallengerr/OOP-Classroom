@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hus.oop_classroom.Home;
 import com.hus.oop_classroom.R;
 import com.squareup.picasso.Picasso;
 
@@ -43,7 +44,16 @@ public class UserProfile extends AppCompatActivity {
 
         profilePicture=findViewById(R.id.profile_picture);
         changeProfilePicture= findViewById(R.id.set_picture);
+
+
         back=findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfile.this, Home.class));
+
+            }
+        });
 
         firebaseFirestore= FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
