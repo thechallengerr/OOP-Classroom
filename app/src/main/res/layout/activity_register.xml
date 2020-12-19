@@ -29,7 +29,9 @@
             android:drawablePadding="16dp"
             android:hint="Email"
             android:padding="16dp"
-            android:textSize="18dp"></EditText>
+            android:textSize="18dp"
+            android:maxLines="1"
+            android:textColor="#000000"></EditText>
 
 
 
@@ -42,7 +44,9 @@
             android:drawablePadding="16dp"
             android:hint="UserName"
             android:padding="16dp"
-            android:textSize="18dp"></EditText>
+            android:textSize="18dp"
+            android:maxLines="1"
+            android:textColor="#000000"></EditText>
 
         <EditText
             android:id="@+id/mPw"
@@ -55,7 +59,8 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="16dp"
-            android:textSize="18dp"></EditText>
+            android:textSize="18dp"
+            android:textColor="#000000"></EditText>
 
         <EditText
             android:id="@+id/ppw"
@@ -68,7 +73,8 @@
             android:hint="Password Repeat"
             android:inputType="textPassword"
             android:padding="16dp"
-            android:textSize="18dp"></EditText>
+            android:textSize="18dp"
+            android:textColor="#000000"></EditText>
 
 
         <LinearLayout

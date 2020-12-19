@@ -1,6 +1,7 @@
 package com.hus.oop_classroom.Adapter;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -30,5 +31,22 @@ public class UserProfile_vpadapter extends FragmentStatePagerAdapter{
     @Override
     public int getCount() {
         return 2;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        String tittle="";
+        switch (position){
+            case 0:
+                tittle="Infomation";
+                break;
+            case 1:
+                tittle="Attended Courses";
+                break;
+        }
+
+
+        return tittle;
     }
 }

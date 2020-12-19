@@ -43,12 +43,20 @@ public abstract class Users {
         this.email = email;
     }
 
-    public Integer getType() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setType(Integer role) {
+    public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public ArrayList<com.hus.oop_classroom.model.Courses_Accessed> getCourses_Accessed() {
+        return Courses_Accessed;
+    }
+
+    public void setCourses_Accessed(ArrayList<com.hus.oop_classroom.model.Courses_Accessed> courses_Accessed) {
+        Courses_Accessed = courses_Accessed;
     }
 
     public String getUsername() {

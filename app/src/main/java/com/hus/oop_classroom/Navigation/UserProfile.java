@@ -3,6 +3,8 @@
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,12 +18,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hus.oop_classroom.Adapter.UserProfile_vpadapter;
 import com.hus.oop_classroom.Home;
 import com.hus.oop_classroom.R;
 import com.squareup.picasso.Picasso;
@@ -32,6 +36,10 @@ public class UserProfile extends AppCompatActivity {
     private ImageView profilePicture;
     ImageView changeProfilePicture;
     ImageView back;
+
+    TabLayout mTabLayout;
+    ViewPager mViewPager;
+
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     FirebaseFirestore firebaseFirestore;
@@ -45,6 +53,8 @@ public class UserProfile extends AppCompatActivity {
         profilePicture=findViewById(R.id.profile_picture);
         changeProfilePicture= findViewById(R.id.set_picture);
 
+        mTabLayout=findViewById(R.id.profile_tab_layout);
+        mViewPager=findViewById(R.id.profile_viewpager);
 
         back=findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +64,10 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
+
+         UserProfile_vpadapter vpadapter=new UserProfile_vpadapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+         mViewPager.setAdapter(vpadapter);
+         mTabLayout.setupWithViewPager(mViewPager);
 
 
 

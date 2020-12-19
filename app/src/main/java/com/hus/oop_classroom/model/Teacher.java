@@ -9,6 +9,7 @@ public class Teacher extends Users{
     public  Teacher() {
 
     }
+
     public boolean addCourse(Course course) {
 
         return true;

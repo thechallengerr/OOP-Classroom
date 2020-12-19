@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -20,7 +21,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hus.oop_classroom.Home;
 import com.hus.oop_classroom.R;
+import com.hus.oop_classroom.TeachersHome;
+import com.hus.oop_classroom.model.Student;
+import com.hus.oop_classroom.model.Teacher;
 import com.hus.oop_classroom.model.Users;
 
 import java.util.HashMap;
@@ -29,10 +34,14 @@ import java.util.Map;
 public class Register extends AppCompatActivity {
     private static final String TAG = "REGISTER";
     EditText mEmail, mUser, password, passwordrepeat;
-    String nemail, nuser, npass, npass2, type;
+    String nemail;
+    String nuser;
+    String npass;
+    String npass2;
+    int role = 0;
+    Users users;
     FirebaseAuth mAuth;
     Button re;
-    private Users user;
     DatabaseReference ref;
     RadioButton radSt, radTeacher;
     int maxid=0;
@@ -48,12 +57,40 @@ public class Register extends AppCompatActivity {
         mUser= (EditText)findViewById(R.id.mUser);
         password=(EditText)findViewById(R.id.mPw);
         passwordrepeat=(EditText)findViewById(R.id.ppw);
-        user= new Users();
         re= findViewById(R.id.btn2);
         radSt= findViewById(R.id.radst);
         radTeacher= findViewById(R.id.radteacher);
         mAuth= FirebaseAuth.getInstance();
         ref= FirebaseDatabase.getInstance().getReference().child("Users");
+        radSt.setChecked(true);
+        radSt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radTeacher.setChecked(false);
+                radSt.setChecked(true);
+                role = 0;
+            }
+        });
+        radTeacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radTeacher.setChecked(true);
+                radSt.setChecked(false);
+                role = 1;
+            }
+        });
+//        if (radSt.isChecked())
+//        {
+//            role = 0;
+//            radTeacher.setChecked(false);
+//        }
+//
+//        if (radTeacher.isChecked())
+//        {
+//            role = 1;
+//            radSt.setChecked(false);
+//
+//        }
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -78,11 +115,11 @@ public class Register extends AppCompatActivity {
 
 
                 if (TextUtils.isEmpty(nemail) || TextUtils.isEmpty(npass) || TextUtils.isEmpty(npass2)){
-                    Toast.makeText(Register.this, "Don't empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this, "Fill the blank,please", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!nemail.contains("@")) {
-                    mEmail.setError("Email must be @");
+                    mEmail.setError("Email must contain @");
                 return;
                 }
 
@@ -90,35 +127,48 @@ public class Register extends AppCompatActivity {
                     passwordrepeat.setError("Password repeat doesn't match");
                     return;
                 }
+
 //                if(ref.child("email").getDatabase().equals(nemail)){
 //                    mEmail.setError("Email is existed");
 //                    return;
 //
 //                }
-                type = "";
 
-                if (radSt.isChecked())
-                {
-                    type = "Student";
-                }
-
-                if (radTeacher.isChecked())
-                {
-                    type = "Teacher";
-                }
                 //user.setId(maxid+1);
-                user.setEmail(nemail);
-                user.setType(type);
-                user.setUsername(nuser);
-                user.setPassword(npass);
-
-                ref.push().setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                if(role == 0){
+                    users= new Student();
+//                    users.setEmail(nemail);
+//                    users.setRole(role);
+//                    users.setUsername(nuser);
+//                    users.setPassword(npass);
+                }
+                else {
+                    users=new Teacher();
+//                    users.setEmail(nemail);
+//                    users.setRole(role);
+//                    users.setUsername(nuser);
+//                    users.setPassword(npass);
+                }
+                users.setEmail(nemail);
+                users.setRole(role);
+                users.setUsername(nuser);
+                users.setPassword(npass);
+                ref.push().setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                            // mAuth.createUserWithEmailAndPassword(nemail,npass);
                             Toast.makeText(Register.this, "Create account successfully, login again", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Register.this, Login.class));
+                            if(users.getRole() == 1) {
+                                Intent intent = new Intent(Register.this, TeachersHome.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else {
+                                Intent intent = new Intent(Register.this, Home.class);
+                                startActivity(intent);
+                                finish();
+                            }
                         }else{
                             Toast.makeText(Register.this,"Failed...",Toast.LENGTH_SHORT).show();
                         }

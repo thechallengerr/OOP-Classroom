@@ -11,16 +11,18 @@ public class Course {
     private String teacher;
     private Date course_startday;
     private String course_description;
-    private List<PlayList> playList = null;
 
-    public Course(int course_photo_ID, int attendant,int price, String course_name, String teacher, Date course_startday, String course_description) {
+    private List<Lectures> lectures = null;
+
+    public Course(int course_photo_ID, int attendant, int price, String course_name, String teacher, Date course_startday, String course_description, List<Lectures> lectures) {
         this.course_photo_ID = course_photo_ID;
         this.attendant = attendant;
+        this.price = price;
         this.course_name = course_name;
         this.teacher = teacher;
         this.course_startday = course_startday;
-        this.price=price;
-        this.course_description=course_description;
+        this.course_description = course_description;
+        this.lectures = lectures;
     }
 
     public int getCourse_photo_ID() {
@@ -55,12 +57,20 @@ public class Course {
         this.teacher = teacher;
     }
 
-    public int getFee() {
+    public int getPrice() {
         return price;
     }
 
-    public void setFee(int fee) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getCourse_description() {
+        return course_description;
+    }
+
+    public void setCourse_description(String course_description) {
+        this.course_description = course_description;
     }
 
     public Date getCourse_startday() {
@@ -69,5 +79,13 @@ public class Course {
 
     public void setCourse_startday(Date course_startday) {
         this.course_startday = course_startday;
+    }
+
+    public List<Lectures> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(List<Lectures> lectures) {
+        this.lectures = lectures;
     }
 }

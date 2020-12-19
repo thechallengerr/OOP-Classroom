@@ -24,6 +24,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.hus.oop_classroom.Home;
 import com.hus.oop_classroom.R;
+import com.hus.oop_classroom.TeachersHome;
+import com.hus.oop_classroom.model.Student;
+import com.hus.oop_classroom.model.Teacher;
 import com.hus.oop_classroom.model.Users;
 
 public class Login extends AppCompatActivity {
@@ -102,12 +105,20 @@ public class Login extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot user : snapshot.getChildren()) {
                             // do something with the individual "issues"
-                            Users users = user.getValue(Users.class);
-                            if (pw.equals(users.getPassword())) {
+                            Student usersStudent = user.getValue(Student.class);
+                            Teacher usersTeacher = user.getValue(Teacher.class);
+                            if (pw.equals(usersTeacher.getPassword()) ) {
                                 Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(Login.this, Home.class);
-                                startActivity(intent);
-                                finish();
+                                if(usersTeacher.getRole() == 1) {
+                                    Intent intent = new Intent(Login.this, TeachersHome.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else {
+                                    Intent intent = new Intent(Login.this, Home.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
                             } else {
                                 Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
                             }
