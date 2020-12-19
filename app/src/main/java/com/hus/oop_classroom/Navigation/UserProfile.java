@@ -29,7 +29,8 @@ import java.net.URI;
 
 public class UserProfile extends AppCompatActivity {
     private ImageView profilePicture;
-    TextView changeProfilePicture;
+    ImageView changeProfilePicture;
+    ImageView back;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     FirebaseFirestore firebaseFirestore;
@@ -41,7 +42,8 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
         profilePicture=findViewById(R.id.profile_picture);
-        changeProfilePicture= findViewById(R.id.update_profile_picture);
+        changeProfilePicture= findViewById(R.id.set_picture);
+        back=findViewById(R.id.back);
 
         firebaseFirestore= FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
