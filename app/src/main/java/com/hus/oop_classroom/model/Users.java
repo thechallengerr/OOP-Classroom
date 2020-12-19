@@ -1,10 +1,23 @@
 package com.hus.oop_classroom.model;
 
-public class Users {
+import java.util.ArrayList;
+
+public abstract class Users {
     private String email;
-    private String type;
+    private Integer role;
     private String username;
     private String password;
+    private String avatar;
+    private ArrayList<Courses_Accessed> Courses_Accessed;
+
+    public Users(String email, Integer role, String username, String password, String avatar, ArrayList<Courses_Accessed> courses_Accessed) {
+        this.email = email;
+        this.role = role;
+        this.username = username;
+        this.password = password;
+        this.avatar = avatar;
+        Courses_Accessed = courses_Accessed;
+    }
 
     public Users() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -14,10 +27,11 @@ public class Users {
         this.email = email;
         this.password = password;
     }
-    public Users(String email, String type, String username, String password) {
+
+    public Users(String email, Integer role, String username, String password) {
         this.email = email;
-        this.type = type;
-        this.username= username;
+        this.role = role;
+        this.username = username;
         this.password = password;
     }
 
@@ -29,12 +43,12 @@ public class Users {
         this.email = email;
     }
 
-    public String getType() {
-        return type;
+    public Integer getType() {
+        return role;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(Integer role) {
+        this.role = role;
     }
 
     public String getUsername() {
@@ -52,4 +66,17 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    //    public String getRoleName(Users users) {
+//        if(users.getType() == 1 ){
+//            return "Giảng viên";
+//        }else{
+//            return "Sinh viên";
+//        }
+//    }
+    public abstract void ActionCourse(Users users);
+
+    public abstract void getCourse(Users users);
+
+
 }
