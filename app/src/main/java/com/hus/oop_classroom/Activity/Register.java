@@ -31,6 +31,8 @@ import com.hus.oop_classroom.model.Users;
 import java.util.HashMap;
 import java.util.Map;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class Register extends AppCompatActivity {
     private static final String TAG = "REGISTER";
     EditText mEmail, mUser, password, passwordrepeat;
@@ -38,6 +40,7 @@ public class Register extends AppCompatActivity {
     String nuser;
     String npass;
     String npass2;
+    String passHash;
     int role = 0;
     Users users;
     FirebaseAuth mAuth;
@@ -132,7 +135,7 @@ public class Register extends AppCompatActivity {
 //                    mEmail.setError("Email is existed");
 //                    return;
 //
-//                }
+//              }
 
                 //user.setId(maxid+1);
                 if(role == 0){
@@ -149,10 +152,11 @@ public class Register extends AppCompatActivity {
 //                    users.setUsername(nuser);
 //                    users.setPassword(npass);
                 }
+                passHash= BCrypt.withDefaults().hashToString(12, npass.toCharArray());
                 users.setEmail(nemail);
                 users.setRole(role);
                 users.setUsername(nuser);
-                users.setPassword(npass);
+                users.setPassword(passHash);
                 ref.push().setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

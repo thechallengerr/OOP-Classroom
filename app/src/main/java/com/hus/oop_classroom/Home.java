@@ -13,20 +13,22 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+
 import com.hus.oop_classroom.Activity.Login;
-import com.hus.oop_classroom.model.Events;
-import com.hus.oop_classroom.model.Announcements;
 import com.hus.oop_classroom.Navigation.Communication.ActivityAppRating;
 import com.hus.oop_classroom.Navigation.Communication.ActivityReport;
 import com.hus.oop_classroom.Navigation.Communication.ActivityShare;
 import com.hus.oop_classroom.Navigation.Personal.Course.Nav_Course;
 import com.hus.oop_classroom.Navigation.UserProfile;
+import com.hus.oop_classroom.model.Announcements;
+import com.hus.oop_classroom.model.Events;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     NavigationView navigationView;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +37,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBarDrawerToggle drawerToggle= new ActionBarDrawerToggle(this, drawerLayout,toolbar,
+//        toolbar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawerLayout.openDrawer(GravityCompat.START);
+//            }
+//        });
+//        navigationView.bringToFront();
+        toggle= new ActionBarDrawerToggle(this, drawerLayout,toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 //        View header = navigationView.getHeaderView(0);
         navigationView.setCheckedItem(R.id.nav_home);
@@ -71,10 +80,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         switch (item.getItemId()){
             case R.id.nav_home:
                 break;
-
+//            case R.id.nav_announcements:
+//                startActivity(new Intent(Home.this, Announcements.class));
+//                break;
             case R.id.nav_courses:
                 startActivity(new Intent(Home.this, Nav_Course.class));
                 break;
+//            case R.id.nav_events:
+//                startActivity(new Intent(Home.this, Events.class));
+//                break;
             case R.id.nav_profile:
                 startActivity(new Intent(Home.this,UserProfile.class));
                 break;

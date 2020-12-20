@@ -29,13 +29,20 @@ import com.hus.oop_classroom.model.Student;
 import com.hus.oop_classroom.model.Teacher;
 import com.hus.oop_classroom.model.Users;
 
+import java.security.Security;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class Login extends AppCompatActivity {
     private EditText edit_email, edit_pw;
     DatabaseReference ref;
     CheckBox remember;
     TextView t1,t2;
     Button login;
-    private String email, pw;
+    String email;
+    String pw;
+    BCrypt.Result pass_result;
+    String hash;
     private SharedPreferences mPrefs;
     private SharedPreferences.Editor editor;
     private Boolean saveLogin;
@@ -77,6 +84,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 email =edit_email.getText().toString().trim();
                 pw=edit_pw.getText().toString().trim();
+
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pw)){
                     edit_email.setError("required");
                     edit_pw.setError("required");
@@ -104,10 +112,12 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot user : snapshot.getChildren()) {
+                            hash= user.child("password").getValue().toString();
+                            pass_result= BCrypt.verifyer().verify(pw.toCharArray(), hash);
                             // do something with the individual "issues"
                             Student usersStudent = user.getValue(Student.class);
                             Teacher usersTeacher = user.getValue(Teacher.class);
-                            if (pw.equals(usersTeacher.getPassword()) ) {
+                            if (pass_result.verified){
                                 Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
                                 if(usersTeacher.getRole() == 1) {
                                     Intent intent = new Intent(Login.this, TeachersHome.class);
