@@ -121,15 +121,16 @@ public class Register extends AppCompatActivity {
                     mEmail.setError("Email must contain @");
                     return;
                 }
+                if (npass.length() < 6) {
+                    password.setError("Password must be at least 6 characters");
+                    return;
+                }
                 if (!npass.equals(npass2)) {
                     passwordrepeat.setError("Password repeat doesn't match");
                     return;
                 }
                 //user.setId(maxid+1);
-                if(role == 0){
-                    users= new Student();
-                }
-                else users=new Teacher();
+
 
                 ref.orderByChild("email").equalTo(nemail).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -139,6 +140,10 @@ public class Register extends AppCompatActivity {
                             return;
                         }
                         else {
+                            if(role == 0){
+                                users= new Student();
+                            }
+                            else users=new Teacher();
                             passHash = BCrypt.withDefaults().hashToString(12, npass.toCharArray());
                             users.setEmail(nemail);
                             users.setRole(role);
