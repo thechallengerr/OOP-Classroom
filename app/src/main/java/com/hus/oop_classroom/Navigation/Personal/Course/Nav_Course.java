@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.hus.oop_classroom.Adapter.CourseAdapter;
+import com.hus.oop_classroom.Home;
 import com.hus.oop_classroom.R;
 
 public class Nav_Course extends AppCompatActivity {
@@ -26,5 +29,9 @@ public class Nav_Course extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return true;
+    }
+    public void Back_home (View v){
+        startActivity(new Intent(Nav_Course.this, Home.class));
+        finish();
     }
 }

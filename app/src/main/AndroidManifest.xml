@@ -28,7 +28,6 @@
         <activity android:name=".Navigation.Communication.ActivityShare" />
         <activity android:name=".Navigation.Communication.ActivityAppRating" />
         <activity android:name=".Navigation.Personal.Course.Nav_Course" />
-        <activity android:name=".model.Lectures" />
         <activity android:name=".model.Events" />
         <activity android:name=".model.Announcements" />
     </application>

@@ -29,7 +29,6 @@ import com.hus.oop_classroom.model.Student;
 import com.hus.oop_classroom.model.Teacher;
 import com.hus.oop_classroom.model.Users;
 
-import java.security.Security;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
@@ -41,8 +40,8 @@ public class Login extends AppCompatActivity {
     Button login;
     String email;
     String pw;
-    BCrypt.Result pass_result;
     String hash;
+    String role;
     private SharedPreferences mPrefs;
     private SharedPreferences.Editor editor;
     private Boolean saveLogin;
@@ -111,28 +110,29 @@ public class Login extends AppCompatActivity {
                 query.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot user : snapshot.getChildren()) {
-                            hash= user.child("password").getValue().toString();
-                            pass_result= BCrypt.verifyer().verify(pw.toCharArray(), hash);
-                            // do something with the individual "issues"
-                            Student usersStudent = user.getValue(Student.class);
-                            Teacher usersTeacher = user.getValue(Teacher.class);
-                            if (pass_result.verified){
-                                Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
-                                if(usersTeacher.getRole() == 1) {
-                                    Intent intent = new Intent(Login.this, TeachersHome.class);
-                                    startActivity(intent);
-                                    finish();
+                            if(!snapshot.exists()){
+                                Toast.makeText(Login.this, "This account doesn't exists", Toast.LENGTH_SHORT).show();
+                                return;
+                            }else {
+                                for (DataSnapshot user : snapshot.getChildren()) {
+                                    hash = user.child("password").getValue().toString();
+                                    BCrypt.Result pass_result = BCrypt.verifyer().verify(pw.toCharArray(), hash);
+                                    role = user.child("role").getValue().toString();
+                                    if (pass_result.verified == true) {
+                                        Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
+                                        if (role.equals("1")) {
+                                            startActivity(new Intent(Login.this, TeachersHome.class));
+                                            finish();
+                                        } else if (role.equals("0")) {
+                                            startActivity(new Intent(Login.this, Home.class));
+                                            finish();
+                                        }
+
+                                    } else {
+                                        Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
+                                    }
                                 }
-                                else {
-                                    Intent intent = new Intent(Login.this, Home.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            } else {
-                                Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
                             }
-                        }
                     }
 
                     @Override

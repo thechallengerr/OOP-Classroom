@@ -5,15 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TeachersHome">
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back"
+        android:onClick="Back_home" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="54dp"
         android:layout_height="55dp"
         app:srcCompat="@drawable/ic_add"
-        tools:layout_editor_absoluteX="327dp"
-        tools:layout_editor_absoluteY="660dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="331dp"
+        tools:layout_editor_absoluteY="660dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -22,6 +32,6 @@
         android:gravity="center"
         android:text="Create a course , my friend "
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-227dp" />
+        tools:layout_editor_absoluteY="31dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

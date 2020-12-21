@@ -43,12 +43,10 @@ public class Register extends AppCompatActivity {
     String passHash;
     int role = 0;
     Users users;
-    FirebaseAuth mAuth;
     Button re;
     DatabaseReference ref;
     RadioButton radSt, radTeacher;
     int maxid=0;
-
     Map<String, Object > dataToSave = new HashMap<String, Object>();
 
 
@@ -63,7 +61,6 @@ public class Register extends AppCompatActivity {
         re= findViewById(R.id.btn2);
         radSt= findViewById(R.id.radst);
         radTeacher= findViewById(R.id.radteacher);
-        mAuth= FirebaseAuth.getInstance();
         ref= FirebaseDatabase.getInstance().getReference().child("Users");
         radSt.setChecked(true);
         radSt.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +89,7 @@ public class Register extends AppCompatActivity {
 //        {
 //            role = 1;
 //            radSt.setChecked(false);
-//
+
 //        }
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -116,73 +113,63 @@ public class Register extends AppCompatActivity {
                 npass=password.getText().toString().trim();
                 npass2=passwordrepeat.getText().toString().trim();
 
-
                 if (TextUtils.isEmpty(nemail) || TextUtils.isEmpty(npass) || TextUtils.isEmpty(npass2)){
                     Toast.makeText(Register.this, "Fill the blank,please", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!nemail.contains("@")) {
                     mEmail.setError("Email must contain @");
-                return;
+                    return;
                 }
-
                 if (!npass.equals(npass2)) {
                     passwordrepeat.setError("Password repeat doesn't match");
                     return;
                 }
-
-//                if(ref.child("email").getDatabase().equals(nemail)){
-//                    mEmail.setError("Email is existed");
-//                    return;
-//
-//              }
-
                 //user.setId(maxid+1);
                 if(role == 0){
                     users= new Student();
-//                    users.setEmail(nemail);
-//                    users.setRole(role);
-//                    users.setUsername(nuser);
-//                    users.setPassword(npass);
                 }
-                else {
-                    users=new Teacher();
-//                    users.setEmail(nemail);
-//                    users.setRole(role);
-//                    users.setUsername(nuser);
-//                    users.setPassword(npass);
-                }
-                passHash= BCrypt.withDefaults().hashToString(12, npass.toCharArray());
-                users.setEmail(nemail);
-                users.setRole(role);
-                users.setUsername(nuser);
-                users.setPassword(passHash);
+                else users=new Teacher();
+
+                ref.orderByChild("email").equalTo(nemail).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            mEmail.setError("This email already exists");
+                            return;
+                        }
+                        else {
+                            passHash = BCrypt.withDefaults().hashToString(12, npass.toCharArray());
+                            users.setEmail(nemail);
+                            users.setRole(role);
+                            users.setUsername(nuser);
+                            users.setPassword(passHash);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 ref.push().setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                           // mAuth.createUserWithEmailAndPassword(nemail,npass);
-                            Toast.makeText(Register.this, "Create account successfully, login again", Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()){
+                            Toast.makeText(Register.this, "Create account successfully!", Toast.LENGTH_SHORT).show();
                             if(users.getRole() == 1) {
-                                Intent intent = new Intent(Register.this, TeachersHome.class);
-                                startActivity(intent);
+                                startActivity(new Intent(Register.this, TeachersHome.class));
                                 finish();
                             }
                             else {
-                                Intent intent = new Intent(Register.this, Home.class);
-                                startActivity(intent);
+                                startActivity(new Intent(Register.this, Home.class));
                                 finish();
                             }
-                        }else{
-                            Toast.makeText(Register.this,"Failed...",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
+
         });
-
-
-        }
-
-
+    }
 }
